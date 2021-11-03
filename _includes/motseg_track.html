@@ -1,0 +1,155 @@
+<section id="motseg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-20 col-lg-offset-1">
+                <div class="text-center">
+                    <h2 class="section-heading">Motion Segmentation Track</h2>
+                    <hr class="primary">
+                </div>
+
+                    <p>It poses the problem as segmenting moving objects like animals crossing the street, or unusual construction vehicles.</p>
+                    <p> We provide an improved dataset for motion instance segmentation towards that end where we mainly focus on increasing the sequences and categories to avoid overfitting to a certain semantic class for moving objects. We build upon the publicly available Cityscapes-VPS[6] and KITTI-MOTS[7] datasets. We further provide baselines for real-time joint panoptic and motion instance segmentation that are publicly released under Models. </p>
+                    <style type="text/css">
+                    .tg  {border-collapse:collapse;border-spacing:0; margin-left: auto;margin-right: auto;}
+                    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                      overflow:hidden;padding:10px 5px;word-break:normal;}
+                    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                    .tg .tg-85gd{background-color:#f56b00;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+                    .tg .tg-opee{background-color:#ffffc7;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+                    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                    </style>
+                    <table class="tg">
+                        <thead>
+                          <tr>
+                            <th class="tg-0pky">Dataset</th>
+                            <th class="tg-0pky">#Frames</th>
+                            <th class="tg-0pky">#Seqs</th>
+                            <th class="tg-0pky">#Cats</th>
+                            <th class="tg-0pky">Instances</th>
+                            <th class="tg-0pky">Panoptic</th>
+                            <th class="tg-0pky">Tracking</th>
+                            <th class="tg-0pky">Annotation Type</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="tg-0pky">DAVIS[1]</td>
+                            <td class="tg-0pky">6208</td>
+                            <td class="tg-0pky">90</td>
+                            <td class="tg-0pky">78</td>
+                            <td class="tg-0pky">Yes</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">Yes</td>
+                            <td class="tg-0pky">Manually Labelled</td>
+                          </tr>
+                          <tr>
+                            <td class="tg-0pky">Kitti-Motion[5]</td>
+                            <td class="tg-0pky">455</td>
+                            <td class="tg-0pky">-</td>
+                            <td class="tg-0pky">1</td>
+                            <td class="tg-0pky">No<br></td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">Manually Labelled</td>
+                          </tr>
+                          <tr>
+                            <td class="tg-0pky">Kitti-MoSeg[2][3]</td>
+                            <td class="tg-0pky">12919</td>
+                            <td class="tg-0pky">38</td>
+                            <td class="tg-0pky">1</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">Weak Annotations</td>
+                          </tr>
+                          <tr>
+                            <td class="tg-0pky">Cityscapes-Motion[5]</td>
+                            <td class="tg-0pky">3475</td>
+                            <td class="tg-0pky">-</td>
+                            <td class="tg-0pky">1</td>
+                            <td class="tg-0pky">Yes<br></td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">Manually Labelled</td>
+                          </tr>
+                          <tr>
+                            <td class="tg-0pky">Kitti-MoSeg Extended[4]<br></td>
+                            <td class="tg-0pky">12919</td>
+                            <td class="tg-0pky">38</td>
+                            <td class="tg-0pky">5</td>
+                            <td class="tg-0pky">Yes</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">No</td>
+                            <td class="tg-0pky">Weak Annotations</td>
+                          </tr>
+                          <tr>
+                            <td class="tg-85gd">Ours</td>
+                            <td class="tg-85gd">11008</td>
+                            <td class="tg-85gd">520</td>
+                            <td class="tg-85gd">8</td>
+                            <td class="tg-85gd">Yes<br></td>
+                            <td class="tg-85gd">Yes</td>
+                            <td class="tg-85gd">Yes</td>
+                            <td class="tg-85gd">Manually Labelled</td>
+                          </tr>
+                        </tbody>
+                </table>                
+                <p></p><p></p>
+                <h2 class="section-heading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cityscapes-VPS Motion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kitti-MOTS Motion</h2>
+                <div class="box">
+                <iframe width="510" height="265" align="left" src="https://www.youtube.com/embed/YiXjyGaUwxk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><iframe width="510" height="265" align="right" src="https://www.youtube.com/embed/7uD137j_N1k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p></p><p></p><p></p><p></p><p></p>
+                </div>
+                <div class="text-center">
+                    <a href="https://github.com/MSiam/video_class_agnostic_segmentation/blob/main/Motion_Dataset_Preview.md" class="btn btn-primary btn-xl text-center">Preview</a>
+                    <a href="https://github.com/MSiam/video_class_agnostic_segmentation/blob/main/Motion_Dataset_Download.md" class="btn btn-primary btn-xl text-center">Download Data</a>
+                    <a href="https://github.com/MSiam/video_class_agnostic_segmentation/blob/main/README.md" class="btn btn-primary btn-xl text-center">Benchmark</a>
+                    <a href="https://youtu.be/MANQsoMAl5o" class="btn btn-primary btn-xl text-center">Demo</a>
+                </div>
+                
+                <p style="font-size:14px;">[1] Sergi  Caelles, Jordi Pont-Tuset,  Fed-erico  Perazzi,  Alberto  Montes,  Kevis-Kokitsi  Maninis,and  Luc  Van  Gool.    The  2019  davis  challenge  on  vos:Unsupervised multi-object segmentation.arXiv preprintarXiv:1905.00737, 2019. <br/>
+                [2] Mennatullah Siam, Heba Mahgoub, Mo-hamed Zahran, Senthil Yogamani, Martin Jagersand, andAhmad El-Sallab.  Modnet:  Moving object detection net-work with motion and appearance for autonomous driving.arXiv preprint arXiv:1709.04821, 2017.</br>
+                [3] Hazem Rashed, Mohamed Ramzy,Victor  Vaquero,  Ahmad  El  Sallab,  Ganesh  Sistu,  andSenthil Yogamani.  Fusemodnet: Real-time camera and li-dar based moving object detection for robust low-light au-tonomous driving.  InThe IEEE International Conferenceon Computer Vision (ICCV) Workshops, Oct 2019.</br>
+                [4] EslamMohamed,MahmoudEwaisha, Mennatullah Siam, Hazem Rashed, Senthil Yo-gamani, and Ahmad El-Sallab. Instancemotseg: Real-timeinstance  motion  segmentation  for  autonomous  driving.arXiv preprint arXiv:2008.07008, 2020.</br>
+                [5] Johan  Vertens,  Abhinav  Valada,  andWolfram Burgard. Smsnet: Semantic motion segmentationusing  deep  convolutional  neural  networks.   InProceed-ings of the IEEE International Conference on IntelligentRobots and Systems (IROS), Vancouver, Canada, 2017.</br>
+                [6] Dahun Kim, Sanghyun Woo, Joon-YoungLee, and In So Kweon.  Video panoptic segmentation.  InProceedings of the IEEE/CVF Conference on ComputerVision and Pattern Recognition, pages 9859–9868, 2020.</br>
+                [7] PaulVoigtlaender,MichaelKrause,  Aljosa  Osep,  Jonathon  Luiten,  Berin  Balachan-dar  Gnana  Sekar,  Andreas  Geiger,  and  Bastian  Leibe.Mots:  Multi-object tracking and segmentation.   InCon-ference on Computer Vision and Pattern Recognition(CVPR), 2019.</p>
+
+
+            </div>
+        </div>
+    </div>
+<!--    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+                    <h3>Sturdy Templates</h3>
+                    <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                    <h3>Ready to Ship</h3>
+                    <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                    <h3>Up to Date</h3>
+                    <p class="text-muted">We update dependencies to keep things fresh.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                    <h3>Made with Love</h3>
+                    <p class="text-muted">You have to make your websites with love these days!</p>
+                </div>
+            </div>
+        </div>
+        </div>--!>
+</section>
