@@ -8,26 +8,79 @@
                 </div>
 
                     <p> Online demo tool soon ...</p>
+                    <br><br>
+                    <div class="tab">
+                      <button class="tablinks" onclick="openTab(event, 'TrainingData')">Training Data</button>
+                      <button class="tablinks" onclick="openTab(event, 'TestData')">Test Data</button>
+                    </div>
 
+                    <div id="TrainingData" class="tabcontent">
+                      <p style="font-size:18px;">Please specify the base classes and upload the support set image-label pairs.</p>
+                      <h3 class="text-primary">Training Classes</h3>
+                      <p style="font-size:18px;">Select from four folds, each fold contain certain set of classes already trained on (base classes).</p>
+                      <table class="mytable">
+                      <tr>
+                          <th class="myth" style="font-size:18px;"><br><br> Base Classes List: <br><br>
+                          <textarea id="classlistarea" style="font-size:14px;" rows="30" cols="20" disabled>
+                          </textarea>
 
-                   <form class="form-signin" method=post enctype=multipart/form-data>
-		<input type="file" name="file" class="form-control-file" id="inputfile"  onchange="preview_image(event)">
-		<br />
-		<img id="output-image" class="rounded mx-auto d-block"/>
-		<!--<button class="btn btn-lg btn-primary btn-block" type="submit">Upload</button>
-        <p class="mt-5 mb-3 text-muted">Powered by PyTorch, Flask, and Bootstrap.</p>
-		<div class="row">
-                <div class="col-sm-4 align-self-center"><img src="/static/pt.png" alt="" width="60"></div>
-                <div class="col-sm-4 align-self-center"><img src="/static/flask.png" alt="" width="90"></div>
-                <div class="col-sm-4 align-self-center"><img src="/static/bs.png" alt="" width="50"></div>
-        </div>!-->
-    <script src="js/browse.js">
-    </script>
-        </form>
-        
+                          </th>
+                        <th class="myth">
+                            <br><br>
+                            <div class="dropdown">
+                              <button onclick="myFunction()" class="dropbtn">Fold List</button>
+                              <div id="myDropdown" class="dropdown-content">
+                                <a onclick="fold1()">1</a>
+                                <a onclick="fold2()">2</a>
+                                <a onclick="fold3()">3</a>
+                                <a onclick="fold4()">4</a>
+                              </div>
+                            </div>
+                        </th>
+                      </tr>
+                      </table>
 
-<!--        <script type="text/javascript">
-</script>!-->
+                      <h3 class="text-primary">Support Set</h3>
+                      <p style="font-size:18px;">Upload Images for the novel class.</p>
+                      <table class="mysmalltable">
+                      <tr>
+                          <th class="mysmallth">
+                            <input id="file-input" type="file" multiple>
+                            <div id="preview"></div>
+                          </th>
+                    </tr>
+                    </table>
+                      <p style="font-size:18px;">Upload Corresponding Masks.</p>
+  
+                        <table class="mysmalltable">
+                          <tr>
+                              <th class="mysmallth">
+                                <input id="file-input-mask" type="file" multiple>
+                                <div id="preview-mask"></div>
+                              </th>
+                        </tr>
+                       </table>
+  
+                    </div>
+
+                    <div id="TestData" class="tabcontent">
+                      <p style="font-size:16px;">Please upload the test video frames.</p>
+                     </table>
+                        <table class="mysmalltable">
+                          <tr>
+                              <th class="mysmallth">
+                                <input id="file-input-qry" type="file" multiple>
+                                <div id="preview-qry"></div>
+                              </th>
+                        </tr>
+                       </table>
+                        
+
+                    </div>
+
+            <script src="js/tab.js"></script>
+            <script src="js/combo.js"></script>
+            <script src="js/browse.js"></script>
 
             </div>
         </div>

@@ -221,6 +221,61 @@ header {
         margin-bottom: 0;
     }
 }
+.dropbtn {
+  background-color: #f2d3ac;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #f0c48d;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f0c48d;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #e69025;}
+
+.show {display: block;}
+
+.myth {
+  height: 500px;
+  vertical-align: top;
+}
+.mysmallth {
+  height: 250px;
+  vertical-align: top;
+}
+
+.mytable {
+  width: 500px;
+}
+.mysmalltable {
+  width: 200px;
+}
+
 
 .portfolio-box {
     position: relative;
@@ -301,6 +356,44 @@ header {
 
 .btn-primary {
     @include button-variant(white, $theme-primary, $theme-primary);
+}
+
+.p-solid {border-style: solid;}
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 
 .btn {
