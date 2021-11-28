@@ -41,16 +41,20 @@
                       </table>
 
                       <h3 class="text-primary">Support Set</h3>
-                      <p style="font-size:18px;">Upload Images for the novel class.</p>
-                      <table class="mysmalltable">
+                      <p style="font-size:18px;">Upload Images for the novel class or Use sample.</p>
+                      <table class="mytable">
                       <tr>
                           <th class="mysmallth">
                             <input id="file-input" type="file" multiple>
                             <div id="preview"></div>
                           </th>
+                            <th class="mysmallth">
+                                <button type="button" onclick="useSampleSprt()">Use Sample</button>
+                            </th>
                     </tr>
                     </table>
-                      <p style="font-size:18px;">Upload Corresponding Masks.</p>
+                    <p style="font-size:18px;">Upload Corresponding Masks if you have uploaded the images.</p>
+                    <p style="font-size:18px;"> If using a sample no masks are required.</p>
   
                         <table class="mysmalltable">
                           <tr>
@@ -64,7 +68,7 @@
                     </div>
 
                     <div id="TestData" class="tabcontent">
-                      <p style="font-size:16px;">Please upload the test video frames.</p>
+                      <p style="font-size:16px;">Please upload the test video frames Or use a sample then press submit.</p>
                      </table>
                         <table class="mysmalltable">
                           <tr>
@@ -72,6 +76,10 @@
                                 <input id="file-input-qry" type="file" multiple>
                                 <div id="preview-qry"></div>
                               </th>
+                            <th class="mysmallth">
+                                <button type="button" onclick="useSampleQry()">Use Sample</button>
+                            </th>
+
                         </tr>
                         <tr>
                             <th class="mysmallth">
@@ -81,7 +89,9 @@
                                 <input type="text" id="submitted" style="font-size:12px;" disabled>
                                 </input>
                             </th>
-
+                        </tr>
+                        <tr>
+                            <div id="preview-predictions"></div>
                         </tr>
                        </table>
 
@@ -93,6 +103,7 @@
             <script src="js/combo.js"></script>
             <script src="js/browse.js"></script>
             <script src="js/submit.js"></script>
+            <script src="js/use_sample.js"></script>
 
             </div>
         </div>

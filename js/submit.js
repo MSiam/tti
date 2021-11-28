@@ -1,55 +1,89 @@
+
+function convert_image(buffer, mask, height,width)
+{
+    for(var y = 0; y < height; y++) {
+        for(var x = 0; x < width; x++) {
+            var pos = (y * width + x) * 4; // position in buffer based on x and y
+            buffer[pos  ] = mask[y][x][0];           // some R value [0, 255]
+            buffer[pos+1] = mask[y][x][1];           // some G value
+            buffer[pos+2] = mask[y][x][2];           // some B value
+            buffer[pos+3] = 255;           // set alpha channel
+        }
+    }
+    // create off-screen canvas element
+    var canvas = document.createElement('canvas');
+    ctx = canvas.getContext('2d');
+
+    canvas.width = width;
+    canvas.height = height;
+
+    // create imageData object
+    var idata = ctx.createImageData(width, height);
+
+    // set our buffer as source
+    idata.data.set(buffer);
+
+    // update canvas with new data
+    ctx.putImageData(idata, 0, 0);
+    var dataUri = canvas.toDataURL();
+    return dataUri;
+}
+
+function visualize_masks(masks){
+    var width = masks[0][0].length;
+    var height = masks[0].length;
+    var preview = document.querySelector('#preview-predictions');
+    preview.innerHTML = "";  
+
+    for (i=0; i<masks.length; i++)
+    {
+        buffer = new Uint8ClampedArray(width * height * 4);
+        imguri = convert_image(buffer, masks[i], height, width)
+        var image = new Image();
+        image.height = 100;
+        image.src    = imguri;
+        preview.appendChild(image);
+    }
+}
+
 function callTTI() {
   console.log('submitted');
   document.getElementById("submitted").value = "Submitted";
   var subtext = document.getElementById("submitted").value;
-  for (i=0; i<urls_qry.length; i++)
+  var fd = new FormData();
+  for (i = 0; i<urls_sprt.length; i++)
   {
-      console.log(urls_qry[i]);
+      var fname = "sprt_img_00" + i
+      fd.append(fname, urls_sprt[i] /*, optional filename */);
+      fname = "sprt_mask_00" + i
+      fd.append(fname, urls_sprtmasks[i] /*, optional filename */);
   }
-    //document.location.href = "http://flaskexample-env.eba-ycext9wn.ca-central-1.elasticbeanstalk.com/"
-  //var http = new XMLHttpRequest();
-  //var url = 'http://flaskexample-env.eba-ycext9wn.ca-central-1.elasticbeanstalk.com';
-  //var url = 'http://127.0.0.1:5000/';
-  //http.open('POST', url, true);
-  //var params = {'qry':urls_qry, 'sprt': urls_sprt, 'sprt_masks': urls_sprtmasks};
-  //http.send(params);
+  
+  // Query Images
+  for (i = 0; i<urls_qry.length; i++)
+  {
+      var fname = "qry_img_00" + i
+      fd.append(fname, urls_qry[i] /*, optional filename */);
+  }
+  
+  // TTI Options
+  var blob = new Blob([current_fold], { type: "text/plain"});
+  fd.append('opts', blob);
 
-  //http.onreadystatechange = (e) => {
-  //  console.log(http.responseText)
- // }
-    var fd = new FormData();
-//    for (i = 0; i<urls_sprt.length; i++)
-//    {
-//        var fname = "sprt_img_00" + i + ".jpg"
-//        fd.append(fname, urls_sprt[i] /*, optional filename */);
-//        fname = "sprt_mask_00" + i + ".png"
-//        fd.append(fname, urls_sprtmasks[i] /*, optional filename */);
-//    }
-//    
-//    for (i = 0; i<urls_qry.length; i++)
-//    {
-//        var fname = "qry_img_00" + i
-//        console.log(fname)
-//        fd.append(fname, urls_qry[i] /*, optional filename */);
-//    }
-    
-    //var blob = new Blob([{'train_split': 1}], { type: "text/xml"});
-    var blob = JSON.parse('{"train_split":' + 1 +'}')
-    fd.append('opts', blob);
-    var req = jQuery.ajax({
-      url: 'http://localhost:5000/', 
-      method: 'POST',
-      data: fd, // sends fields with filename mimetype etc
-      // data: aFiles[0], // optional just sends the binary
-      processData: false, // don't let jquery process the data
-      contentType: false // let xhr set the content type
-    });
+  var req = jQuery.ajax({
+    url: 'http://localhost:5000/', 
+    method: 'POST',
+    data: fd, // sends fields with filename mimetype etc
+    processData: false, // don't let jquery process the data
+    contentType: false // let xhr set the content type
+  });
 
-    // jQuery is promise A++ compatible and is the todays norms of doing things 
-    req.then(function(response) {
-      console.log(response)
-    }, function(xhr) {
-      console.error('failed to fetch xhr', xhr)
-    })
+  // jQuery is promise A++ compatible and is the todays norms of doing things 
+  req.then(function(response)
+  {
+      visualize_masks(response['masks'])
+  }, function(xhr) {
+    console.error('failed to fetch xhr', xhr)
+  })
 
 }
