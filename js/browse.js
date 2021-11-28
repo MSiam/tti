@@ -14,6 +14,9 @@
 //}
 
 let nimages = 0
+let urls_qry = [];
+let urls_sprt = [];
+let urls_sprtmasks = [];
 
 function previewImages() {
 
@@ -22,7 +25,13 @@ function previewImages() {
   if (this.files) {
     [].forEach.call(this.files, readAndPreview);
   }
+  
   nimages = this.files.length;
+  //for (i=0; i<nimages; i++)
+  //{
+  //  urls_sprt.push(URL.createObjectURL(this.files[i]));
+  //}
+  urls_sprt = this.files;
 
   function readAndPreview(file) {
 
@@ -57,7 +66,12 @@ function previewMasks() {
   if (this.files) {
     [].forEach.call(this.files, readAndPreview);
   }
-  
+//  for (i=0; i<this.files.length; i++)
+//  {
+//    urls_sprtmasks.push(URL.createObjectURL(this.files[i]));
+//  }
+  urls_sprtmasks = this.files;
+
   let nmasks = this.files.length;
   if (nimages != nmasks){
       window.alert("Number of images and masks are not equal");
@@ -96,6 +110,12 @@ function previewQry() {
     [].forEach.call(this.files, readAndPreview);
   }
   
+//  for (i=0; i<this.files.length; i++)
+//  {
+//    urls_qry.push(URL.createObjectURL(this.files[i]));
+//  }
+  urls_qry = this.files;
+
   function readAndPreview(file) {
 
     // Make sure `file.name` matches our extensions criteria

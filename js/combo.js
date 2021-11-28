@@ -1,3 +1,4 @@
+let current_fold = 0;
 
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -18,7 +19,8 @@ window.onclick = function(event) {
 }
 
 function fold1(){
-    let fold = ["fold2", "fold3", "fold4"]
+    let fold = ["fold2", "fold3", "fold4"];
+    current_fold = 0;
     document.getElementById("classlistarea").value = "";
     for (i=0; i< fold.length; i++)
         for (j=0; j < classes[fold[i]].length; j++)
@@ -26,7 +28,8 @@ function fold1(){
 }
 
 function fold2(){
-    let fold = ["fold1", "fold3", "fold4"]
+    let fold = ["fold1", "fold3", "fold4"];
+    current_fold = 1;
     document.getElementById("classlistarea").value = "";
     for (i=0; i< fold.length; i++)
         for (j=0; j < classes[fold[i]].length; j++)
@@ -34,7 +37,8 @@ function fold2(){
 }
 
 function fold3(){
-    let fold = ["fold1", "fold2", "fold4"]
+    let fold = ["fold1", "fold2", "fold4"];
+    current_fold = 2;
     document.getElementById("classlistarea").value = "";
     for (i=0; i< fold.length; i++)
         for (j=0; j < classes[fold[i]].length; j++)
@@ -42,7 +46,8 @@ function fold3(){
 }
 
 function fold4(){
-    let fold = ["fold1", "fold2", "fold3"]
+    let fold = ["fold1", "fold2", "fold3"];
+    current_fold = 3;
     document.getElementById("classlistarea").value = "";
     for (i=0; i< fold.length; i++)
         for (j=0; j < classes[fold[i]].length; j++)
