@@ -53,16 +53,16 @@ function callTTI() {
   var fd = new FormData();
   for (i = 0; i<urls_sprt.length; i++)
   {
-      var fname = "sprt_img_00" + i
+      var fname = "sprt_img_" + urls_sprt[i]['name'];
       fd.append(fname, urls_sprt[i] /*, optional filename */);
-      fname = "sprt_mask_00" + i
+      fname = "sprt_mask_" + urls_sprtmasks[i]['name'];
       fd.append(fname, urls_sprtmasks[i] /*, optional filename */);
   }
   
   // Query Images
   for (i = 0; i<urls_qry.length; i++)
   {
-      var fname = "qry_img_00" + i
+      var fname = "qry_img_" + urls_qry[i]['name'];
       fd.append(fname, urls_qry[i] /*, optional filename */);
   }
   
