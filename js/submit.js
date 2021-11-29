@@ -48,7 +48,7 @@ function visualize_masks(masks){
 
 function callTTI() {
   console.log('submitted');
-  document.getElementById("submitted").value = "Submitted";
+  document.getElementById("submitted").value = "Processing in 1-2 minutes";
   var subtext = document.getElementById("submitted").value;
   var fd = new FormData();
   for (i = 0; i<urls_sprt.length; i++)
@@ -71,7 +71,7 @@ function callTTI() {
   fd.append('opts', blob);
 
   var req = jQuery.ajax({
-    url: 'http://localhost:5000/', 
+      url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/', 
     method: 'POST',
     data: fd, // sends fields with filename mimetype etc
     processData: false, // don't let jquery process the data

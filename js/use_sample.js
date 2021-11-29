@@ -2,11 +2,18 @@ urls_sprt = [];
  
 function useSampleSprt() {
     // Fill in Support Images and Labels
+    fold1()
     var folder = "example_fsvos/sprt/";
-    readImages(folder, urls_sprt);
+    var preview = document.querySelector('#preview');
+    preview.innerHTML = "";  
+
+    readImages(folder, urls_sprt, preview);
 
     var folder_masks = "example_fsvos/sprt_newmasks/";
-    readImages(folder_masks, urls_sprtmasks);
+    preview = document.querySelector('#preview-mask');
+    preview.innerHTML = "";  
+
+    readImages(folder_masks, urls_sprtmasks, preview);
 }
 
 var GetFileBlobUsingURL = function (url, fname, convertBlob) {
@@ -32,7 +39,7 @@ var GetFileObjectFromURL = function(filePathOrUrl, fname, convertBlob) {
 };
 
 
-function readImages(folder, currentarr){
+function readImages(folder, currentarr, preview){
     return $.ajax({
         url : folder,
         success: function (data) {
@@ -40,6 +47,10 @@ function readImages(folder, currentarr){
                 if( val.match(/\.(jpe?g|png|gif)$/) ) { 
                     var fullpath = folder + val
                     GetFileObjectFromURL(fullpath, val, function (fileObject) {
+                          var image = new Image();
+                          image.height = 100;
+                          image.src    = fullpath;
+                          preview.appendChild(image);
                          currentarr.push(fileObject);
                     });
                 } 
@@ -49,8 +60,13 @@ function readImages(folder, currentarr){
 }
 
 function useSampleQry() {
+    fold1()
+    urls_sprt = [];
+    urls_sprtmasks= [];
     useSampleSprt();
 
     var folder = "example_fsvos/qry/524b470fd0/";
-    readImages(folder, urls_qry);
+    preview = document.querySelector('#preview-qry');
+    preview.innerHTML = "";  
+    readImages(folder, urls_qry, preview);
 }
