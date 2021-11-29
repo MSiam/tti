@@ -48,7 +48,7 @@ function visualize_masks(masks){
 
 function callTTI() {
   console.log('submitted');
-  document.getElementById("submitted").value = "Processing in 1-2 minutes";
+  document.getElementById("submitted").value = "Server not Working yet!";
   var subtext = document.getElementById("submitted").value;
   var fd = new FormData();
   for (i = 0; i<urls_sprt.length; i++)
