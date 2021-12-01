@@ -71,7 +71,7 @@ function callTTI() {
   fd.append('opts', blob);
 
   var req = jQuery.ajax({
-      url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/', 
+      url: 'http://127.0.0.1:5000/', 
     method: 'POST',
     data: fd, // sends fields with filename mimetype etc
     processData: false, // don't let jquery process the data
