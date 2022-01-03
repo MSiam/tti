@@ -87,7 +87,7 @@ function callTTI() {
       contentType: false, // let xhr set the content type
       async: true,
   });
-
+    
   // jQuery is promise A++ compatible and is the todays norms of doing things 
   var received_text = true;
   req.then(function(response)
