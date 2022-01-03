@@ -104,7 +104,7 @@ function callTTI() {
       }
       else
       {
-        timer = setInterval(fetchResponse, 10000);//60000);
+        timer = setInterval(fetchResponse, 60000);//60000);
       }
 
   }, function(xhr) {
