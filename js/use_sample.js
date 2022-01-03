@@ -1,7 +1,9 @@
-urls_sprt = [];
  
 function useSampleSprt() {
     // Fill in Support Images and Labels
+    urls_sprt = [];
+    urls_sprtmasks= [];
+
     fold1()
     var folder = "example_fsvos/sprt/";
     var preview = document.querySelector('#preview');
@@ -63,6 +65,7 @@ function useSampleQry() {
     fold1()
     urls_sprt = [];
     urls_sprtmasks= [];
+    urls_qry = [];
     useSampleSprt();
 
     var folder = "example_fsvos/qry/524b470fd0/";

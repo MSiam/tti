@@ -48,9 +48,10 @@ function visualize_masks(masks){
 
 function callTTI() {
   console.log('submitted');
-  document.getElementById("submitted").value = "Server not Working yet!";
+  document.getElementById("submitted").value = "Running on CPU in 2-3 mins";
   var subtext = document.getElementById("submitted").value;
   var fd = new FormData();
+  console.log('Support Length ', urls_sprt.length);
   for (i = 0; i<urls_sprt.length; i++)
   {
       var fname = "sprt_img_" + urls_sprt[i]['name'];
@@ -60,7 +61,14 @@ function callTTI() {
   }
   
   // Query Images
-  for (i = 0; i<urls_qry.length; i++)
+  var max_qry_len = 40; // 40 frames to process max
+  if (urls_qry.length < max_qry_len)
+  {
+      max_qry_len = urls_qry.length;
+  }
+  console.log('Query Length ', max_qry_len);
+
+  for (i = 0; i < max_qry_len; i++)
   {
       var fname = "qry_img_" + urls_qry[i]['name'];
       fd.append(fname, urls_qry[i] /*, optional filename */);
@@ -71,19 +79,63 @@ function callTTI() {
   fd.append('opts', blob);
 
   var req = jQuery.ajax({
-      url: 'http://127.0.0.1:5000/', 
-    method: 'POST',
-    data: fd, // sends fields with filename mimetype etc
-    processData: false, // don't let jquery process the data
-    contentType: false // let xhr set the content type
+      //url: 'http://127.0.0.1:5000',
+      url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/', 
+      method: 'POST',
+      data: fd, // sends fields with filename mimetype etc
+      processData: false, // don't let jquery process the data
+      contentType: false, // let xhr set the content type
+      async: true,
   });
 
   // jQuery is promise A++ compatible and is the todays norms of doing things 
+  var received_text = true;
   req.then(function(response)
   {
-      visualize_masks(response['masks'])
+      console.log('received response ', response['text'])
+      received_text = response['text'];
+      if (received_text == 'Error')
+      {
+        document.getElementById("submitted").value = "Support Should be 5";
+      }
+      else if (received_text == 'Busy')
+      {
+        document.getElementById("submitted").value = "Server Busy Try in 5 Min.s";
+      }
+      else
+      {
+        timer = setInterval(fetchResponse, 10000);//60000);
+      }
+
   }, function(xhr) {
     console.error('failed to fetch xhr', xhr)
   })
 
+}
+
+function fetchResponse()
+{
+  var req_response = jQuery.ajax({
+      //url: 'http://127.0.0.1:5000/fetch',
+      url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/fetch', 
+      method: 'POST',
+      async: true,
+  });
+
+  // jQuery is promise A++ compatible and is the todays norms of doing things 
+  req_response.then(function(response)
+  {
+      if ('text' in response)
+      {
+          console.log('received response ', response['text']);
+      }
+      else{
+          clearInterval(timer);
+          console.log('Final response')
+          visualize_masks(response['masks'])
+      }
+      //visualize_masks(response['masks'])
+  }, function(xhr) {
+    console.error('failed to fetch xhr', xhr)
+  })
 }
