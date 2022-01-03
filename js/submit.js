@@ -79,8 +79,8 @@ function callTTI() {
   fd.append('opts', blob);
 
   var req = jQuery.ajax({
-      //url: 'http://127.0.0.1:5000',
-      url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/', 
+      url: 'http://127.0.0.1:5000',
+      //url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/', 
       method: 'POST',
       data: fd, // sends fields with filename mimetype etc
       processData: false, // don't let jquery process the data
@@ -116,8 +116,8 @@ function callTTI() {
 function fetchResponse()
 {
   var req_response = jQuery.ajax({
-      //url: 'http://127.0.0.1:5000/fetch',
-      url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/fetch', 
+      url: 'http://127.0.0.1:5000/fetch',
+      //url: 'http://ttiyork-env.eba-cxnmdk62.ca-central-1.elasticbeanstalk.com/fetch', 
       method: 'POST',
       async: true,
   });
