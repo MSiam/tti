@@ -1,12 +1,8 @@
 # Site settings
 baseurl: "/tti"
 url: "https://msiam.github.io"
-title:
-email:
-description: > # this means to ignore newlines until "baseurl:"
-
-twitter_username:
-github_username:
+title: TTI
+description: "Online Demo for Fewshot Video Object Segmentation"
 
 # Build settings
 markdown: kramdown

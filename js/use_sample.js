@@ -5,13 +5,13 @@ function useSampleSprt() {
     urls_sprtmasks= [];
 
     fold1()
-    var folder = "example_fsvos/sprt/";
+    var folder = "/tti/example_fsvos/sprt/";
     var preview = document.querySelector('#preview');
     preview.innerHTML = "";  
 
     readImages(folder, urls_sprt, preview);
 
-    var folder_masks = "example_fsvos/sprt_newmasks/";
+    var folder_masks = "/tti/example_fsvos/sprt_newmasks/";
     preview = document.querySelector('#preview-mask');
     preview.innerHTML = "";  
 
@@ -68,7 +68,7 @@ function useSampleQry() {
     urls_qry = [];
     useSampleSprt();
 
-    var folder = "example_fsvos/qry/524b470fd0/";
+    var folder = "/tti/example_fsvos/qry/524b470fd0/";
     preview = document.querySelector('#preview-qry');
     preview.innerHTML = "";  
     readImages(folder, urls_qry, preview);
